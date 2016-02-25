@@ -2,28 +2,31 @@ package data_structures
 
 import "fmt"
 
-type Tree struct {
+type BinarySearchTree struct {
 	item  int32
-	left  *Tree
-	right *Tree
+	left  *BinarySearchTree
+	right *BinarySearchTree
 }
 
-func (tree *Tree) InternalPrintTree(depth int, direction string) {
+func (tree *BinarySearchTree) InternalPrintTree(depth int, direction string) {
 	// Print the current node...
 	if depth == 0 {
-		fmt.Println("ROOT: %s", tree.item)
+		fmt.Printf("ROOT: %d\n", tree.item)
 	} else {
-		fmt.Println("[Depth: %d, Direction: %s] %s", depth, direction, tree.item)
+		fmt.Printf("[Depth: %d, Direction: %s] %d\n", depth, direction, tree.item)
 	}
 
 	// ...then recurse into the left or right branch!
 	if tree.left != nil {
-		InternalPrintTree(&tree.left, depth+1, "left")
-	} else if tree.right != nil {
-		InternalPrintTree(&tree.right, depth+1, "right")
+		tree.left.InternalPrintTree(depth+1, "left")
+	}
+	if tree.right != nil {
+		tree.right.InternalPrintTree(depth+1, "right")
 	}
 }
 
-func (tree *Tree) printTree() {
-	InternalPrintTree(&tree, 0, "root")
+// printTree prints the tree starting at its root. Its internal method above
+// takes care of reaching its leaves.
+func (tree *BinarySearchTree) printTree() {
+	tree.InternalPrintTree(0, "root")
 }

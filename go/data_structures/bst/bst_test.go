@@ -1,79 +1,75 @@
 package data_structures
 
-import "testing"
+import (
+	"testing"
+)
 
-var treeWithoutChildren Tree = Tree{
+var treeWithoutChildren BinarySearchTree = BinarySearchTree{
 	item: 3,
 }
 
-var treeWithLeftOnly Tree = Tree{
+var treeWithSingleLevel BinarySearchTree = BinarySearchTree{
 	item: 3,
-	left: &Tree{
+	left: &BinarySearchTree{
 		item: 2,
 	},
-}
-
-var treeWithRightOnly Tree = Tree{
-	item: 3,
-	right: &Tree{
+	right: &BinarySearchTree{
 		item: 4,
 	},
 }
 
-var treeWithSingleLevel Tree = Tree{
+var treeWithTwoLevels BinarySearchTree = BinarySearchTree{
 	item: 3,
-	left: &Tree{
+	left: &BinarySearchTree{
 		item: 2,
-	},
-	right: &Tree{
-		item: 4,
-	},
-}
-
-var treeWithTwoLevels Tree = Tree{
-	item: 3,
-	left: &Tree{
-		item: 2,
-		left: &Tree{
+		left: &BinarySearchTree{
 			item: 1,
 		},
-		right: &Tree{
+		right: &BinarySearchTree{
 			item: 2,
 		},
 	},
-	right: Tree{
+	right: &BinarySearchTree{
 		item: 4,
-		left: &Tree{
+		left: &BinarySearchTree{
 			item: 4,
 		},
-		right: &Tree{
+		right: &BinarySearchTree{
 			item: 6,
 		},
 	},
 }
 
-var unbalancedTreeWithTwoLevels Tree = Tree{
+var unbalancedTreeWithTwoLevels BinarySearchTree = BinarySearchTree{
 	item: 3,
-	left: &Tree{
+	left: &BinarySearchTree{
 		item: 2,
-		left: &Tree{
+		left: &BinarySearchTree{
 			item: 4,
 		},
-		right: &Tree{
+		right: &BinarySearchTree{
 			item: 2,
 		},
 	},
-	right: &Tree{
+	right: &BinarySearchTree{
 		item: 4,
-		left: &Tree{
+		left: &BinarySearchTree{
 			item: 4,
 		},
-		right: &Tree{
+		right: &BinarySearchTree{
 			item: 1,
 		},
 	},
 }
 
 func TestPrintTreeRootOnly(t *testing.T) {
-	printTree(&treeWithoutChildren)
+	treeWithoutChildren.printTree()
+}
+
+func TestPrintTreeSingleLevel(t *testing.T) {
+	treeWithSingleLevel.printTree()
+}
+
+func TestPrintTreeMultiLevel(t *testing.T) {
+	treeWithTwoLevels.printTree()
 }
