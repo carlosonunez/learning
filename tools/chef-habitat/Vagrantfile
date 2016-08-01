@@ -1,15 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+machine_name = "chef-habitat-" + ENV['USER']
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.provider "virtualbox" do |v|
-    v.name = "chef-habitat-cnunez"
+    v.name = machine_name
   end
+  config.vm.define machine_name
 
   # provisions a dynamic private key for this VM
   config.vm.provision "chef_solo" do |chef|
-    chef.cookbooks_path "cookbooks"
-    chef.add_recipe "setup"
+    chef.add_recipe("setup")
   end
 
   # machine-specifc

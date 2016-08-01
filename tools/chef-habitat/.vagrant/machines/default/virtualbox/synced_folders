@@ -1,1 +1,0 @@
-{"virtualbox":{"/dl":{"guestpath":"/dl","hostpath":"/Users/carlosnunez/Downloads","disabled":false,"__vagrantfile":true},"/src":{"guestpath":"/src","hostpath":"/Users/carlosnunez/src","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/carlosnunez/src/learning/tools/chef-habitat","disabled":false,"__vagrantfile":true}}}
