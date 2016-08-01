@@ -1,2 +1,6 @@
 # Ignore cached vagrant files
 **/.vagrant
+
+# Ignore Vim swap files
+**/.swp
+**/.swo
